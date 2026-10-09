@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Temporal SAR Crop Mapping | Karnal District</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-bg { background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+    <!-- Header / Hero Section -->
+    <header class="hero-bg text-white py-16 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl md:text-5xl font-bold mt-2 mb-3">Multi-Temporal Sentinel-1 SAR Crop Mapping</h1>
+            <p class="text-lg text-slate-300">Mapping Paddy Rice, Upland Crops, and Fallow Land in Karnal District, Haryana</p>
+            <div class="mt-6 text-sm text-slate-400">
+                <p><strong>Author:</strong> Urmika Mitra | Bharati Vidyapeeth (BVIEER), Pune</p>
+                <p class="mt-1"><strong>Course:</strong> Advanced Remote Sensing | <strong>Platform:</strong> Google Earth Engine</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-5xl mx-auto px-6 py-10 space-y-12">
+
+        <!-- 1. Overview -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span class="text-emerald-600">01.</span> Introduction to SAR in Agriculture
+            </h2>
+            <p class="text-slate-600 mb-4">
+                Reliable agricultural monitoring is vital for food security and water management. While optical satellites struggle during thick monsoon cloud cover, <strong>Synthetic Aperture Radar (SAR)</strong> transmits active microwave signals that penetrate clouds, haze, and darkness. 
+            </p>
+            <p class="text-slate-600">
+                By tracking radar backscatter across the Kharif season, we can observe distinct crop cycles—such as the dramatic change in backscatter when paddy fields are flooded for transplantation and subsequent vegetative growth.
+            </p>
+        </section>
+
+        <!-- 2. Study Area -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span class="text-emerald-600">02.</span> Study Area: Karnal District, Haryana
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6 items-center">
+                <div>
+                    <p class="text-slate-600 mb-3">
+                        Karnal district is an intensively cultivated region in the Indo-Gangetic plain, making it an ideal testbed for automated crop mapping.
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 text-slate-600 text-sm">
+                        <li><strong>Boundary Source:</strong> Administrative boundaries via Google Earth Engine.</li>
+                        <li><strong>Season Monitored:</strong> Kharif Season.</li>
+                        <li><strong>Key Target Classes:</strong> Paddy Rice, Upland Crops, and Fallow Land.</li>
+                    </ul>
+                </div>
+                <div class="h-48 rounded-lg overflow-hidden border border-slate-300">
+    <img src="study_area.png" alt="Study Area Extent" class="w-full h-full object-cover">
+</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Methodology -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span class="text-emerald-600">03.</span> Methodology & Data Workflow
+            </h2>
+            <div class="grid sm:grid-cols-3 gap-4 text-center">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                    <h3 class="font-semibold text-slate-800 mb-1">Data Acquisition</h3>
+                    <p class="text-xs text-slate-600">Sentinel-1 GRD C-band (VV & VH polarizations, Descending orbit).</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                    <h3 class="font-semibold text-slate-800 mb-1">Feature Extraction</h3>
+                    <p class="text-xs text-slate-600">Computed VH/VV Ratio, temporal mean, and standard deviation.</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                    <h3 class="font-semibold text-slate-800 mb-1">Classification</h3>
+                    <p class="text-xs text-slate-600">Trained Random Forest Classifier using reference sample points.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. GEE Interactive Map & Results Section -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span class="text-emerald-600">04.</span> GEE Interactive Map & Classification Results
+            </h2>
+            <p class="text-slate-600 mb-4">
+                The classified map below displays the spatial distribution across Karnal district with the bottom-left legend (Paddy Rice, Upland Crops, and Fallow Land). You can also click the button below to open the live Google Earth Engine map directly.
+            </p>
+            
+            <!-- Map Display Area with Legend Info & Live Link Button -->
+            <div class="bg-slate-100 p-6 rounded-xl border border-slate-200 text-center space-y-4">
+                <img src="gee_map.png" alt="GEE Map" class="w-full h-full object-cover rounded-lg">
+                
+                <div class="pt-2">
+                    <a href=" https://urmika-ee.projects.earthengine.app/view/crop" target="_blank" class="inline-block bg-emerald-600 text-white px-8 py-3 rounded-xl font-semibold shadow hover:bg-emerald-700 transition">
+                        Open Live GEE Interactive Map / App
+                    </a>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">Legend: Green (Paddy Rice), Orange (Upland Crops), Brown (Fallow Land)</p>
+            </div>
+        </section>
+
+        <!-- 5. Accuracy Assessment -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span class="text-emerald-600">05.</span> Accuracy Assessment
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6 items-center">
+                <div class="bg-emerald-50 border border-emerald-200 p-6 rounded-xl text-center md:col-span-1">
+                    <p class="text-sm font-medium text-emerald-800">Overall Accuracy</p>
+                    <p class="text-4xl font-extrabold text-emerald-600 mt-2">87.6%</p>
+                    <p class="text-xs text-emerald-700 mt-1">Evaluated using independent validation partition</p>
+                </div>
+                <div class="md:col-span-2">
+                    <h3 class="font-semibold text-slate-800 mb-2">Class-wise Performance:</h3>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex justify-between bg-slate-50 p-2 rounded"><span>Class 0: Paddy Rice</span> <span class="font-semibold">~55.2%</span></li>
+                        <li class="flex justify-between bg-slate-50 p-2 rounded"><span>Class 1: Upland Crops</span> <span class="font-semibold">~20.9%</span></li>
+                        <li class="flex justify-between bg-slate-50 p-2 rounded"><span>Class 2: Fallow Land</span> <span class="font-semibold">~98.8%</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Limitations -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span class="text-emerald-600">06.</span> Uncertainty & Limitations
+            </h2>
+            <p class="text-slate-600 text-sm">
+                While Random Forest achieved strong overall performance (~87.6%), mixed pixels in fragmented smallholder farms and localized soil moisture variations can introduce minor classification confusions between classes.
+            </p>
+        </section>
+
+        <!-- 7. References -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <span class="text-emerald-600">07.</span> References & Resources
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm text-slate-600">
+                <li>Veloso, A., et al. (2017). Understanding the temporal behavior of crops using Sentinel-1 and Sentinel-2-like data. <em>Remote Sensing of Environment</em>, 199, 415-426.</li>
+                <li>Mishra, et al. (2022). Crop classification using Sentinel-1 SAR data and machine learning: an Indian agricultural application in Karnal district. <em>Environmental Monitoring and Assessment</em>.</li>
+                <li>Google Earth Engine Documentation & NASA ARSET Training.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+        <p>&copy; 2026 Urmika Mitra | M.Sc. Geoinformatics Assignment | Hosted via GitHub Pages</p>
+    </footer>
+
+</body>
+</html>
